@@ -1,6 +1,7 @@
 package com.sim;
 
 import com.codeborne.selenide.Configuration;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +19,7 @@ public class DemoQA {
 
 
     @Test
+    @Description("Test form second lesson")
     void fillTheForm () {
         open("/automation-practice-form");
         String firstName = "Pavel";
