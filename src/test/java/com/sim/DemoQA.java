@@ -45,7 +45,6 @@ public class DemoQA {
         String state = "NCR";
         String city = "Delhi";
 
-        takeScreenshot();
 
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
@@ -83,9 +82,5 @@ public class DemoQA {
         sleep(1000);
     }
 
-    @Attachment(value = "Скриншот", type = "image/png")
-    public byte[] takeScreenshot() {
-        return Selenide.screenshot(OutputType.BYTES);
-    }
 
 }
