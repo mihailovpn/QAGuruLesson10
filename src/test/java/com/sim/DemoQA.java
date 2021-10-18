@@ -15,6 +15,8 @@ public class DemoQA {
         Configuration.startMaximized = true;
         Configuration.baseUrl = "https://demoqa.com";
     }
+
+
     @Test
     void fillTheForm () {
         open("/automation-practice-form");
