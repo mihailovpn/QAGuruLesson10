@@ -1,15 +1,20 @@
 package com.sim;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import io.qameta.allure.*;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.OutputType;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import java.io.File;
 
+@Feature("Form")
+@Owner("DemoQA")
 public class DemoQA {
     @BeforeAll
     static void openMaximized() {
@@ -20,6 +25,8 @@ public class DemoQA {
 
     @Test
     @Description("Test form second lesson")
+    @Severity(SeverityLevel.MINOR)
+
     void fillTheForm () {
         open("/automation-practice-form");
         String firstName = "Pavel";
@@ -38,7 +45,7 @@ public class DemoQA {
         String state = "NCR";
         String city = "Delhi";
 
-
+        takeScreenshot();
 
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
@@ -74,6 +81,11 @@ public class DemoQA {
         $("tr:nth-child(10) > td:nth-child(2)").shouldHave(text(state + " " + city));
 
         sleep(1000);
+    }
+
+    @Attachment(value = "Скриншот", type = "image/png")
+    public byte[] takeScreenshot() {
+        return Selenide.screenshot(OutputType.BYTES);
     }
 
 }
