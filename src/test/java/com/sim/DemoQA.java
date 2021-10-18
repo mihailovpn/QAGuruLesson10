@@ -19,7 +19,7 @@ public class DemoQA {
     @BeforeAll
     static void openMaximized() {
         Configuration.startMaximized = true;
-        Configuration.baseUrl = "https://demoqa.com";
+        //Configuration.baseUrl = "https://demoqa.com";
     }
 
 
@@ -28,7 +28,7 @@ public class DemoQA {
     @Severity(SeverityLevel.MINOR)
 
     void fillTheForm () {
-        open("/automation-practice-form");
+        open("https://demoqa.com/automation-practice-form");
         String firstName = "Pavel";
         String lastName = "Mikhaylov";
         String userEmail = "mih@test.ru";
