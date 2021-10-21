@@ -11,23 +11,30 @@ import org.openqa.selenium.OutputType;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.File;
 
 @Feature("Form")
 @Owner("DemoQA")
 public class DemoQA {
-    @BeforeAll
-    static void openMaximized() {
-        Configuration.startMaximized = true;
-        //Configuration.baseUrl = "https://demoqa.com";
+    @Test
+    @Description("Positive test")
+    void test0() {
+        assertTrue(true);
     }
-
-
+    @Test
+    @Description("Negative test")
+    void test1() {
+        assertTrue(false);
+    }
+    /*
     @Test
     @Description("Test form second lesson")
     @Severity(SeverityLevel.MINOR)
 
     void fillTheForm () {
+
         open("https://demoqa.com/automation-practice-form");
         String firstName = "Pavel";
         String lastName = "Mikhaylov";
@@ -81,6 +88,6 @@ public class DemoQA {
 
         sleep(1000);
     }
-
+    */
 
 }

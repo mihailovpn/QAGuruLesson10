@@ -10,6 +10,7 @@ import helpers.Attach;
 
 
 public class TestBase {
+    /*
     @BeforeAll
     static void setup() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
@@ -30,5 +31,5 @@ public class TestBase {
         Attach.browserConsoleLogs();
         Attach.addVideo();
     }
-
+    */
 }
