@@ -99,7 +99,7 @@ public class DemoQA {
         $(".react-datepicker__day--029:not(.react-datepicker__day--outside-month").click();
         $("#subjectsInput").setValue(subjectsInput).pressEnter();
         $("#hobbiesWrapper").$(byText(hobbie)).click();
-        $("#uploadPicture").uploadFile(file);
+        //$("#uploadPicture").uploadFile(file);
         $("#currentAddress").setValue(currentAddress);
         $("#state").click();
         $("#stateCity-wrapper").$(byText(state)).click();
