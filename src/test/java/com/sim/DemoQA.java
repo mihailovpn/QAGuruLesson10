@@ -3,10 +3,12 @@ package com.sim;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.CredentialsConfig;
 import helpers.Attach;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import jdk.jfr.Description;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -24,6 +26,9 @@ import java.io.File;
 @Feature("Form")
 @Owner("DemoQA")
 public class DemoQA {
+    public static CredentialsConfig credentials =
+            ConfigFactory.create(CredentialsConfig.class);
+
     @BeforeAll
     static void setup() {
         addListener("AllureSelenide", new AllureSelenide());
@@ -35,8 +40,8 @@ public class DemoQA {
         Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
         String selenoidAddress = System.getProperty("selenoidAddress", "selenoid.autotests.cloud/wd/hub/");
-        String selenoidLogin = "user1";
-        String selenoidPass = "1234";
+        String selenoidLogin = credentials.selenoidLogin();
+        String selenoidPass = credentials.selenoidPass();
         Configuration.remote = "https://" + selenoidLogin + ":" + selenoidPass + "@" + selenoidAddress;
     }
 
