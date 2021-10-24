@@ -34,7 +34,10 @@ public class DemoQA {
 
         Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+        String selenoidAddress = System.getProperty("selenoidAddress", "selenoid.autotests.cloud/wd/hub/");
+        String selenoidLogin = "user1";
+        String selenoidPass = "1234";
+        Configuration.remote = "https://" + selenoidLogin + ":" + selenoidPass + "@" + selenoidAddress;
     }
 
     @AfterEach
