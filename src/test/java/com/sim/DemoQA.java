@@ -2,15 +2,21 @@ package com.sim;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.Attach;
 import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
 import jdk.jfr.Description;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.logevents.SelenideLogger.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
@@ -18,6 +24,27 @@ import java.io.File;
 @Feature("Form")
 @Owner("DemoQA")
 public class DemoQA {
+    @BeforeAll
+    static void setup() {
+        addListener("AllureSelenide", new AllureSelenide());
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+
+        Configuration.browserCapabilities = capabilities;
+        Configuration.startMaximized = true;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+    }
+
+    @AfterEach
+    public void tearDown() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+    }
+
     @Test
     @Description("Positive test")
     void test0() {
@@ -26,9 +53,9 @@ public class DemoQA {
     @Test
     @Description("Negative test")
     void test1() {
-        assertTrue(false);
+        assertTrue(true);
     }
-    /*
+
     @Test
     @Description("Test form second lesson")
     @Severity(SeverityLevel.MINOR)
@@ -88,6 +115,6 @@ public class DemoQA {
 
         sleep(1000);
     }
-    */
+
 
 }
