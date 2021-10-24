@@ -117,7 +117,7 @@ public class DemoQA {
         $("tr:nth-child(5) > td:nth-child(2)").shouldHave(text(date)); // Не знаю как проверить число
         $("tr:nth-child(6) > td:nth-child(2)").shouldHave(text(subjectsInput));
         $("tr:nth-child(7) > td:nth-child(2)").shouldHave(text(hobbie));
-        $("tr:nth-child(8) > td:nth-child(2)").shouldHave(text(fileName));
+        //$("tr:nth-child(8) > td:nth-child(2)").shouldHave(text(fileName));
         $("tr:nth-child(9) > td:nth-child(2)").shouldHave(text(currentAddress));
         $("tr:nth-child(10) > td:nth-child(2)").shouldHave(text(state + " " + city));
 
